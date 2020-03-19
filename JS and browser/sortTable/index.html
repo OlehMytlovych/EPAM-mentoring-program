@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delegation1</title>
+  <style>
+    table {
+       border-collapse: collapse;
+     }
+     th, td {
+       border: 1px solid black;
+       padding: 4px;
+     }
+     th {
+       cursor: pointer;
+     }
+     th:hover {
+       background: yellow;
+     }
+  </style>
+</head>
+<body>
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+        <th data-type="string">Компания</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+        <td>Школа 1</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+        <td>Университет</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+        <td>Школа 2</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+        <td>Гугл</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+        <td>Завод</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <script src="./index.js"></script>
+</body>
+</html>
