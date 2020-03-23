@@ -8,20 +8,17 @@ function addTooltip(container, text) {
   tooltip.classList.add('tooltip');
   document.body.append(tooltip);
 
-  const tooltipLeft = containerScreenX + container.offsetWidth/2 - tooltip.offsetWidth/2;
+  const tooltipLeft = containerScreenX + container.offsetWidth / 2 - tooltip.offsetWidth / 2;
   const tooltipTop = (tooltip.offsetHeight > containerScreenY)
-     ?
-    (containerScreenY + container.offsetHeight + tooltipMargin)
-    : 
-    (containerScreenY - tooltip.offsetHeight - tooltipMargin);
+    ? (containerScreenY + container.offsetHeight + tooltipMargin)
+    : (containerScreenY - tooltip.offsetHeight - tooltipMargin);
 
-  tooltip.style.left = tooltipLeft + 'px';
-  tooltip.style.top = tooltipTop + 'px';
+  tooltip.style.left = `${tooltipLeft}px`;
+  tooltip.style.top = `${tooltipTop}px`;
 }
 
 
-
-document.querySelector('#house').addEventListener('mouseover' , function (e) {
+document.querySelector('#house').addEventListener('mouseover', (e) => {
   const targetText = e.target.dataset.tooltip;
 
   if (document.querySelector('.tooltip')) return;
@@ -32,12 +29,11 @@ document.querySelector('#house').addEventListener('mouseover' , function (e) {
   }
 
   addTooltip(e.currentTarget, e.currentTarget.dataset.tooltip);
-})
+});
 
-document.querySelector('#house').addEventListener('mouseout' , function () {
+document.querySelector('#house').addEventListener('mouseout', () => {
   const shownTooltip = document.querySelector('.tooltip');
-  
   if (!shownTooltip) return;
 
   shownTooltip.remove();
-})
+});
