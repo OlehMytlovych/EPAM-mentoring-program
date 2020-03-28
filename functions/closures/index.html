@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closures</title>
+  
+  <script src="./sum.js"></script>
+  <script src="./sumChain.js"></script>
+  <script src="./sumChainExtended.js"></script>
+  <script src="./lazyExecution.js"></script>
+  <script src="./curryingFuncs.js"></script>
+
+  <style>
+    body {
+      background-color:lightcyan;
+      margin: 10px;
+    }
+    .task {
+      background-color:lightgreen;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: larger;
+    }
+    pre {
+      background-color: white;
+      display: inline-block;
+      font-size: 14px;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="task">
+    <h2>1. sum.js</h2>
+    <p class="instructions">
+      Write a sum function which will work properly when invoked using either syntax below.
+    </p> 
+
+    <pre>
+      <code>
+  sum(2, 3);  // Outputs 5
+  sum(2)(3);  // Outputs 5
+      </code>
+    </pre>
+  </div>
+
+  <div class="task">
+    <h2>2. sumChain.js</h2>
+    <p class="instructions">
+      Write a sum function which will work properly when invoked using either syntax below.
+    </p> 
+
+    <pre>
+      <code>
+  sumChain(2)(3)(4)(5);  // Outputs 14
+      </code>
+    </pre>
+  </div>
+
+  <div class="task">
+    <h2>3. sumChainExtended.js</h2>
+    <p class="instructions">
+      Write a sum function which will work properly when invoked using either syntax below.
+    </p> 
+
+    <pre>
+      <code>
+  sumExtended(2, 3, 4, 5);  // Outputs 14
+  sumExtended(2)(3, 4)(5);  // Outputs 14
+      </code>
+    </pre>
+  </div>
+
+  <div class="task">
+    <h2>4. lazyExecution.js</h2>
+    <p class="instructions">
+      Deferring a function execution can sometimes save a lot of execution time in our programs by
+      postponing the execution to the latest possible instant of time, when we're sure that the time
+      spent while executing it is worth it.
+    </p>
+    <p class="instructions">
+      Write a method make_lazy that takes in a function and the arguments to the function and returns
+      another function which when invoked, returns the result of the original function invoked with the supplied arguments.
+    </p>
+    <p class="instructions">
+      For example:
+    </p>
+    <p class="example">
+      <pre>
+        <code>  
+  function add (a, b) {
+    return a + b;
+  }
+  var lazy_value = make_lazy(add, 2, 3);
+
+  lazy_value() // => 5
+        </code>
+      </pre>
+    </p>
+  </div>
+
+  <div class="task">
+    <h2>5. curryingFuncs.js</h2>
+    <p class="instructions">
+      To complete this Kata you need to make a function multiplyAll which takes
+      an array of integers as an argument. This function must return another function,7
+      which takes a single integer as an argument and returns a new array.
+    </p>
+    <p class="instructions">
+      The returned array should consist of each of the elements
+      from the first array multiplied by the integer.
+    </p>
+
+    <p class="example">
+      <pre>
+        <code>  
+  multiplyAll([1, 2, 3])(2) = [2, 4, 6];
+        </code>
+      </pre>
+    </p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funcs</title>
+
+  
+  <script src="./calcFuncs.js"></script>
+  <script src="./sumDigPow.js"></script>
+  <script src="./functionComposition.js"></script>
+  <script src="./cache.js"></script>
+  <script src="./spy.js"></script>
+  
+  <style>
+    body {
+      background-color:lightcyan;
+      margin: 10px;
+    }
+    .task {
+      background-color:lightgreen;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: larger;
+    }
+    code {
+      background-color: white;
+      display: inline-block;
+      font-size: 14px;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="task">
+    <h2>1. calcFuncs.js</h2>
+    <p class="instructions">
+      This time we want to write calculations using functions and get the results. Let's have a look at some examples:
+    </p> 
+    <p class="instruction">
+      <pre>
+        Requirements:
+
+There must be a function for each number from 0 ("zero") to 9 ("nine")
+There must be a function for each of the following mathematical operations: plus, minus, times, dividedBy (divided_by in Ruby and Python)
+Each calculation consist of exactly one operation and two numbers
+The most outer function represents the left operand, the most inner function represents the right operand
+Divison should be integer division. For example, this should return 2, not 2.666666...:
+      </pre>
+    </p>
+    <pre>
+      <code>
+  seven(times(five())); // must return 35
+  four(plus(nine())); // must return 13
+  eight(minus(three())); // must return 5
+  six(dividedBy(two())); // must return 3
+      </code>
+    </pre>
+  </div>
+
+  <div class="task">
+    <h2>2. sumDigPow.js</h2>
+    
+    <pre>
+      <code>
+  89 = 8^1 + 9^2
+      </code>
+    </pre>
+
+    <p class="instruction">
+      The next number is 135.
+    </p>
+
+    <pre>
+      <code>
+  135 = 1^1 + 3^2 + 5^3  
+      </code>
+    </pre>
+
+    <p class="instructions">
+      We need a function to collect these numbers, that may receive two integers a, b that defines the range [a, b] (inclusive) and outputs a list of the sorted numbers in the range that fulfills the property described above.
+    </p> 
+    
+    <pre>
+      <code>
+  sumDigPow(1, 10) // ==> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  sumDigPow(1, 100) // ==> [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+      </code>
+    </pre>
+
+    <p class="insructions">
+      If there are no numbers of this kind in the range [a, b] the function should output an empty list.
+    </p>
+    <pre>
+      <code>
+  sumDigPow(90, 100) // ==> []
+      </code>
+    </pre>
+  </div>
+
+  <div class="task">
+    <h2>3. functionComposition.js</h2>
+    <pre>
+      <code>
+  f3 = compose( f1 f2 )
+   Is equivalent to...
+  f3(a) = f1( f2( a ) )
+      </code>
+    </pre>
+
+    <p class="instructions">
+      The task is to create a compose function to carry out this task,
+      which will be passed two functions. The resulting composed function
+      may be passed multiple arguments!
+    </p> 
+
+    <pre>
+      <code>
+  compose(f , g)(x)
+   => f( g( x ) )
+      </code>
+    </pre>
+  </div>
+
+  <div class="task">
+    <h2>4. cache.js</h2>
+
+    <p class="instructions">
+      Create a function wrapper, which takes a function and caches its results
+      depending on the arguments, that were applied to the function.
+    </p> 
+
+    <pre>
+      <code>
+  const complexFunction = function(arg1, arg2) { /* complex calculation in here */ };
+  const cachedFunction = cache(complexFunction);
+  
+  cachedFunction('foo', 'bar'); // complex function should be executed
+  cachedFunction('foo', 'bar'); // complex function should not be invoked again, instead the cached result should be returned
+  cachedFunction('foo', 'baz'); // should be executed, because the method wasn't invoked before with these arguments
+      </code>
+    </pre>
+  </div>
+
+  <div class="task">
+    <h2>5. spy.js</h2>
+
+    <p class="instructions">
+      implement a spyOn function which takes any function <code> func </code> as a parameter and returns a <code> spy </code>
+      for <code> func </code>. The returned <code> spy </code> must be callable in the same manner as the original <code> func </code>, and
+      include the following additional properties/methods:
+    </p> 
+
+    <pre>
+      <code>
+  .callCount() — returns the number of times spy has been called
+  .wasCalledWith(val) – returns true if spy was ever called with val, else returns false.
+  .returned(val) — returns true if spy ever returned val, else returns false
+      </code>
+    </pre>
+  </div>
+</body>
+</html>
