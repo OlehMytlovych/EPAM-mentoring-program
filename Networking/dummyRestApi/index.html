@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dummyRestApi</title>
+  <style>
+    .wrapper {
+      width: 900px;
+      margin: auto;
+      font-size: 16px;
+    }
+    h1 {
+      text-align: center;
+    }
+
+    .controls {
+      margin-bottom: 15px;
+    }
+    .controls--item {
+      display: flex;
+    }
+    .controls--item button {
+      margin-left: auto;
+    }
+    label {
+      margin-right: 5px;
+    }
+    .log {
+      min-height: 500px;
+      background-color: rgb(203, 255, 238);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>DummyRestAPI</h1>
+    <div class="controls">
+      <div class="controls--item getEmployeesWrapper">
+        <button id="allEmployeesBtn">Get employees</button>
+      </div>
+
+      <div class="controls--item createEmployeeWrapper">
+        <label for="name">Name: </label>
+        <input type="text" name="name">
+        <label for="salary">Salary: </label>
+        <input type="number" name="salary">
+        <label for="age">Age: </label>
+        <input type="number" name="age">
+        <button id="createEmployeeBtn">Add new employee</button>
+      </div>
+
+      <div class="controls--item deleteEmployeeWrapper">
+        <label for="id">Id(from 1 to 24): </label>
+        <input type="number" name="id">
+        <button id="deleteEmployeeBtn">Delete employee</button>
+      </div>
+
+    </div>
+    <div class="log"></div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
