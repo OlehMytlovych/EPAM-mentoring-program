@@ -1,0 +1,49 @@
+h1 {
+  color: green;
+  text-align: center;
+}
+
+.add-block {
+  border: 3px dotted red;
+
+  &--description,
+  &--company {
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+  }
+
+  &--description {
+    background-color: yellow;
+  }
+
+  &--company {
+    background-color: yellowgreen;
+  }
+}
+
+.info-block p{
+  text-align: center;
+}
+
+.users-block {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.user-tile {
+  width: 30%;
+  background-color: rgb(176, 255, 216);
+  margin-bottom: 15px;
+
+  &--img {
+    width: 100%
+  }
+
+  &--names,
+  &--email {
+    margin: 0;
+    padding: 10px;
+  }
+}

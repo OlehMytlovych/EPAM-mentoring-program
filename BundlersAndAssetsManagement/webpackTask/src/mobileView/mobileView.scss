@@ -1,0 +1,44 @@
+h1 {
+  color: rgb(113, 0, 128);
+  text-align: center;
+}
+
+.user-tile {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  position: relative;
+
+  &--img {
+    width: 70%;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+  }
+
+  &--email,
+  &--names {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(0, 255, 21);
+  }
+
+  &--names {
+    top: 0;
+  }
+  
+  &--email {
+    bottom: 0;
+  }
+}
+
+.info-block--page {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+
+.add-block {
+  font-size: 1.5rem;
+  background-color: yellow;
+  border: 2px dashed red;
+}
