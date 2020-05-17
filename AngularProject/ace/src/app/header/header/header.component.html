@@ -1,41 +1,46 @@
 <header class = "header">
   <div class="container">
-    <h1 class = "logo">ACE</h1>
+    <span class = "logo">
+      <a
+        routerLink="/home"
+        routerLinkActive="active">
+      ACE
+    </a></span>
 
     <nav class="navbar">
-      <ul class="navbar__nav">
-        <li class="navbar__item">
-          <a class="navbar__link"
+      <ul>
+        <li>
+          <a
             routerLink="/home"
             routerLinkActive="active">
-            Home
+            <span>Home</span>
           </a>
         </li>
-        <li class="navbar__item">
-          <a class="navbar__link"
+        <li>
+          <a
             routerLink="/professionals"
             routerLinkActive="active">
-            Professionals
+            <span>Professionals</span>
           </a>
         </li>
-        <li class="navbar__item">
-          <a class="navbar__link"
+        <li>
+          <a
             routerLink="/jobs"
             routerLinkActive="active">
-            Jobs
+            <span>Jobs</span>
           </a>
         </li>
-        <li class="navbar__item">
-          <a class="navbar__link"
+        <li>
+          <a
             routerLink="/partners"
             routerLinkActive="active">
-            Partners
+            <span>Partners</span>
           </a>
         </li>
       </ul>
     </nav>
     <div class="registration">
-      <span>Sign </span> <a>up</a> / <a>in</a>
+      <span>Sign </span> <span class="btn">up</span> / <span class="btn" (click)="openSignInDialog()">in</span>
     </div>
   </div>
 

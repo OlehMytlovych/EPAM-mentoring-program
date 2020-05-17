@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomePageComponent } from './home-page.component';
+import { NewJobDialogComponent } from './new-job-dialog.component';
 
-describe('HomePageComponent', () => {
-  let component: HomePageComponent;
-  let fixture: ComponentFixture<HomePageComponent>;
+describe('NewJobDialogComponent', () => {
+  let component: NewJobDialogComponent;
+  let fixture: ComponentFixture<NewJobDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomePageComponent],
+      declarations: [NewJobDialogComponent],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomePageComponent);
+    fixture = TestBed.createComponent(NewJobDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
