@@ -40,7 +40,16 @@
       </ul>
     </nav>
     <div class="registration">
-      <span>Sign </span> <span class="btn">up</span> / <span class="btn" (click)="openSignInDialog()">in</span>
+      <span>Sign </span>
+      <span
+        class="btn"
+        (click)="authService.openSignUpDialog()">
+        up </span>
+      /
+      <span
+        class="btn"
+        (click)="authService.openSignInDialog()">
+        in</span>
     </div>
   </div>
 
