@@ -12,11 +12,11 @@ const routes: Routes = [
   { path : 'professionals', component: ProfessionalsPageComponent },
   { path : 'jobs', component: JobsPageComponent },
   { path : 'partners', component: PartnersPageComponent },
-  { path : '**', component: NotFoundComponent }
+  { path : '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }
