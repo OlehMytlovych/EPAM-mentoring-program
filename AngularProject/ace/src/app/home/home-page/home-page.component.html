@@ -73,7 +73,7 @@
         </li>
       </ul>
 
-      <button mat-raised-button color="primary" (click)="authService.openSignUpDialog()">Become a customer!</button>
+      <button mat-raised-button color="primary" (click)="authService.openSignUpDialog('customer')">Become a customer!</button>
     </div>
 </section>
 
@@ -98,7 +98,7 @@
         <span>get discounts and support from our partners;</span>
       </li>
     </ul>
-    <button mat-raised-button color="primary" (click)="authService.openSignUpDialog()">Become a professional!</button>
+    <button mat-raised-button color="primary" (click)="authService.openSignUpDialog('professional')">Become a professional!</button>
   </div>
 
   <div class="img">

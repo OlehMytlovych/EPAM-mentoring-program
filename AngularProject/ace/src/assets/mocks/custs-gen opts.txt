@@ -1,0 +1,17 @@
+[
+  '{{repeat(30)}}',
+  {
+    _id: '{{objectId()}}',
+    index: '{{index()}}',
+    guid: '{{guid()}}',
+    isActive: '{{bool()}}',
+    picture: 'http://placehold.it/400x400',
+    name: '{{firstName()}} {{surname()}}',
+    email: '{{email()}}',
+    phone: '+1 {{phone()}}',
+    address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+    registered: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}'
+  }
+]
+
+https://www.json-generator.com/
