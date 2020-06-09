@@ -1,38 +1,28 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../sharedServices/category/category.service';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
-  public categories: Array<string>;
-  private getAllCatsSubscription: Subscription;
+export class HeaderComponent implements OnInit {
+  public categories: Observable<string[]>;
 
-  constructor(private authService: AuthService,
-              private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService,
+              private router: Router) { }
 
   public ngOnInit(): void {
-    this.getAllCategories();
+    this.categories = this.categoryService.getAll();
   }
 
-  public ngOnDestroy(): void {
-    this.getAllCatsSubscription.unsubscribe();
+  public goToSignIn() {
+    this.router.navigate(['sign-in']);
   }
 
-  public openSignInDialog() {
-    this.authService.openSignInDialog();
+  public goToRegistration(role: string) {
+    this.router.navigate(['sign-up', role]);
   }
-
-  public openSignUpDialog(role: string) {
-    this.authService.openSignUpDialog(role);
-  }
-
-  public getAllCategories() {
-    this.getAllCatsSubscription = this.categoryService.getAll().subscribe((categories) => this.categories = categories);
-  }
-
 }

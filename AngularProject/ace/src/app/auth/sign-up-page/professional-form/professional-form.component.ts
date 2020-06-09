@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CategoryService } from '../../../sharedServices/category/category.service';
 import { MustMatch } from '../../../helpers/mustMatch';
 
@@ -9,9 +9,8 @@ import { MustMatch } from '../../../helpers/mustMatch';
   templateUrl: './professional-form.component.html',
   styleUrls: ['./professional-form.component.scss'],
 })
-export class ProfessionalFormComponent implements OnInit, OnDestroy {
-  public categories: Array<string>;
-  private getAllCatsSubscription: Subscription;
+export class ProfessionalFormComponent implements OnInit {
+  public categories: Observable<string[]>;
   public generalForm: FormGroup;
   public detailsForm: FormGroup;
   public finalForm: FormGroup;
@@ -20,7 +19,7 @@ export class ProfessionalFormComponent implements OnInit, OnDestroy {
               private categoryService: CategoryService) { }
 
   public ngOnInit(): void {
-    this.getAllCategories();
+    this.categories = this.categoryService.getAll();
 
     this.generalForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -44,16 +43,7 @@ export class ProfessionalFormComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnDestroy(): void {
-    this.getAllCatsSubscription.unsubscribe();
-  }
-
-  public getAllCategories() {
-    this.getAllCatsSubscription = this.categoryService.getAll().subscribe((categories) => this.categories = categories);
-  }
-
   public onCheckChange(event) {
-    console.log(event);
     const formArray: FormArray = this.generalForm.get('categories') as FormArray;
 
     if (event.checked){
