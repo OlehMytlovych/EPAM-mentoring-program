@@ -12,3 +12,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-left: auto;
   margin-right: auto;
 }
+
+button.mat-menu-item {
+  line-height: 24px;
+  height: 24px;
+}

@@ -1,0 +1,13 @@
+[
+  '{{repeat(10)}}',
+  {
+    _id: '{{objectId()}}',
+    index: '{{index()}}',
+    guid: '{{guid()}}',
+    picture: 'http://placehold.it/400x400',
+    name: '{{firstName()}} {{surname()}}',
+    address: '{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}',
+    website: '{{lorem(1, "words")}}'
+  }
+]
+https://www.json-generator.com/

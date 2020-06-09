@@ -16,19 +16,37 @@
             <span>Home</span>
           </a>
         </li>
-        <li>
-          <a
-            routerLink="/professionals"
-            routerLinkActive="active">
-            <span>Professionals</span>
-          </a>
+        <li [matMenuTriggerFor]="prosCategories">
+          <span>Professionals</span>
+          <mat-menu #prosCategories="matMenu">
+            <button mat-menu-item
+                    routerLink="/professionals"
+                    routerLinkActive="active">
+                    All
+            </button>
+            <button *ngFor='let category of categories'
+                    mat-menu-item
+                  [routerLink]="['/professionals', category]"
+                  routerLinkActive="active">
+                  {{category | titlecase }}
+            </button>
+          </mat-menu>
         </li>
-        <li>
-          <a
-            routerLink="/jobs"
-            routerLinkActive="active">
-            <span>Jobs</span>
-          </a>
+        <li [matMenuTriggerFor]="jobsCategories">
+          <span>Jobs</span>
+          <mat-menu #jobsCategories="matMenu">
+            <button mat-menu-item
+                    routerLink="/jobs"
+                    routerLinkActive="active">
+                    All
+            </button>
+            <button *ngFor='let category of categories'
+                    mat-menu-item
+                  [routerLink]="['/jobs', category]"
+                  routerLinkActive="active">
+                  {{category | titlecase }}
+            </button>
+          </mat-menu>
         </li>
         <li>
           <a
@@ -43,15 +61,25 @@
       <span>Sign </span>
       <span
         class="btn"
-        (click)="authService.openSignUpDialog()">
+        [matMenuTriggerFor]="registerAsMenu">
         up </span>
       /
       <span
         class="btn"
-        (click)="authService.openSignInDialog()">
+        (click)="openSignInDialog()">
         in</span>
+
+        <mat-menu #registerAsMenu="matMenu">
+          <button mat-menu-item
+                  (click)="openSignUpDialog('customer')">
+                  As Customer
+          </button>
+          <button mat-menu-item
+                  (click)="openSignUpDialog('professional')">
+                  As Professional
+          </button>
+        </mat-menu>
     </div>
   </div>
 
 </header>
-

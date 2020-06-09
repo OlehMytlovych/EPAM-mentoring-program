@@ -26,6 +26,10 @@
     padding-bottom: 1rem;
     box-sizing: border-box;
     color: inherit;
+  }
+    span {
+      cursor: pointer;
+    }
 
     span::after {
         content: '';
@@ -39,7 +43,7 @@
     span:hover::after {
         width: 100%;
     }
-  }
+  /* } */
 }
 
 .logo a{
