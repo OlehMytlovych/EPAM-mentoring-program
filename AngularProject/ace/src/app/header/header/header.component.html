@@ -24,7 +24,7 @@
                     routerLinkActive="active">
                     All
             </button>
-            <button *ngFor='let category of categories'
+            <button *ngFor='let category of categories | async'
                     mat-menu-item
                   [routerLink]="['/professionals', category]"
                   routerLinkActive="active">
@@ -40,7 +40,7 @@
                     routerLinkActive="active">
                     All
             </button>
-            <button *ngFor='let category of categories'
+            <button *ngFor='let category of categories | async'
                     mat-menu-item
                   [routerLink]="['/jobs', category]"
                   routerLinkActive="active">
@@ -66,16 +66,16 @@
       /
       <span
         class="btn"
-        (click)="openSignInDialog()">
+        (click)="goToSignIn()">
         in</span>
 
         <mat-menu #registerAsMenu="matMenu">
           <button mat-menu-item
-                  (click)="openSignUpDialog('customer')">
+                  (click)="goToRegistration('customer')">
                   As Customer
           </button>
           <button mat-menu-item
-                  (click)="openSignUpDialog('professional')">
+                  (click)="goToRegistration('professional')">
                   As Professional
           </button>
         </mat-menu>

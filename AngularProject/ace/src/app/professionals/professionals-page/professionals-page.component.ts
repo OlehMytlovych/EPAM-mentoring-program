@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProfessionalService } from '../../sharedServices/professional/professional.service';
-import { Professional, ProCategory } from '../../interfaces/professional';
+import { Professional } from '../../interfaces/professional';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,31 +12,32 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfessionalsPageComponent implements OnInit, OnDestroy {
   public professionals: Professional[];
   public category = '';
-  private queryParamsSubscription: Subscription;
-  private getAllProsSubscription: Subscription;
+  private allSubscriptions: Subscription = new Subscription();
 
   constructor(private professionalService: ProfessionalService,
               private route: ActivatedRoute) { }
 
   public ngOnInit(): void {
 
-    this.queryParamsSubscription = this.route.params
+    const queryParamsSubscription = this.route.params
                                 .subscribe(params => {
                                   this.category = params['category'];
                                   this.getProfessionals();
                                 });
+
+    this.allSubscriptions.add(queryParamsSubscription);
   }
 
   public ngOnDestroy() {
-    this.queryParamsSubscription.unsubscribe();
-    this.getAllProsSubscription.unsubscribe();
+    this.allSubscriptions.unsubscribe();
   }
 
   private getProfessionals() {
-    this.getAllProsSubscription = this.professionalService.getProfessionals(this.category)
+    const getAllProsSubscription = this.professionalService.getProfessionals(this.category)
                               .subscribe(filteredPros => {
                                 this.professionals = filteredPros;
                               });
-  }
 
+    this.allSubscriptions.add(getAllProsSubscription);
+  }
 }

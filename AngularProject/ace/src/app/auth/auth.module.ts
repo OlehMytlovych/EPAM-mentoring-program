@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
-import { SignUpDialogComponent } from './sign-up-dialog/sign-up-dialog.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -10,11 +8,13 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 
-import { ProfessionalFormComponent } from './sign-up-dialog/professional-form/professional-form.component';
-import { CustomerFormComponent } from './sign-up-dialog/customer-form/customer-form.component';
+import { ProfessionalFormComponent } from './sign-up-page/professional-form/professional-form.component';
+import { CustomerFormComponent } from './sign-up-page/customer-form/customer-form.component';
+import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
 @NgModule({
-  declarations: [SignInDialogComponent, SignUpDialogComponent, ProfessionalFormComponent, CustomerFormComponent],
+  declarations: [ProfessionalFormComponent, CustomerFormComponent, SignInPageComponent, SignUpPageComponent],
   imports: [
     CommonModule,
     MatButtonModule,

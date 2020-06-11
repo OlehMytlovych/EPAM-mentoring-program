@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
-import { ProfessionalsModule } from './professionals/professionals.module';
 import { JobsModule } from './jobs/jobs.module';
 import { PartnersModule } from './partners/partners.module';
 
@@ -25,17 +25,17 @@ import { MatMenuModule } from '@angular/material/menu';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    HttpClientModule,
     AuthModule,
     HomeModule,
-    ProfessionalsModule,
     JobsModule,
     PartnersModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatMenuModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
