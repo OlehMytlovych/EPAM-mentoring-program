@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { CategoryService } from '../../../sharedServices/category/category.service';
 import { MustMatch } from '../../../helpers/mustMatch';
+import { Store, select } from '@ngrx/store';
+import { State, selectCategories } from '../../../reducers/index';
 
 @Component({
   selector: 'app-professional-form',
@@ -10,16 +11,15 @@ import { MustMatch } from '../../../helpers/mustMatch';
   styleUrls: ['./professional-form.component.scss'],
 })
 export class ProfessionalFormComponent implements OnInit {
-  public categories: Observable<string[]>;
+  public categories: Observable<string[]> = this.store.pipe(select(selectCategories));
   public generalForm: FormGroup;
   public detailsForm: FormGroup;
   public finalForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private categoryService: CategoryService) { }
+              private store: Store<State>) { }
 
   public ngOnInit(): void {
-    this.categories = this.categoryService.getAll();
 
     this.generalForm = this.formBuilder.group({
       firstName: ['', Validators.required],

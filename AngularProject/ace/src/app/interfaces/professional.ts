@@ -4,7 +4,7 @@ export interface ProCategory {
 }
 
 export interface Experience {
-  photos: Array<string>;
+  photos: string[];
   about: string;
 }
 
@@ -21,7 +21,7 @@ export interface Professional {
   address: string;
   about: string;
   registered: string;
-  categories: Array<ProCategory>;
-  experience: Array<Experience>;
+  categories: ProCategory[];
+  experience: Experience[];
 
 }

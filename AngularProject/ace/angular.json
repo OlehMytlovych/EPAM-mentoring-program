@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "ace"
+  "defaultProject": "ace",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
