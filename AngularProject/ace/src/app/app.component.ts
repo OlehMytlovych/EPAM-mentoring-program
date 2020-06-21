@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   public ngOnInit() {
     this.router.events.pipe(
         filter(event => event instanceof NavigationEnd),
-      ).subscribe(event => {
+      ).subscribe((event) => {
         let route = this.router.routerState.root.firstChild;
         while (route.firstChild) { route = route.firstChild; }
 

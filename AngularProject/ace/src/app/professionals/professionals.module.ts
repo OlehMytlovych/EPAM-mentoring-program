@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfessionalsRoutingModule } from './professionals-routing.module';
 
 import { ProfessionalsPageComponent } from './professionals-page/professionals-page.component';
-
-import { HttpClientModule } from '@angular/common/http'; 0;
-import { ProfessionalsRoutingModule } from './professionals-routing.module';
+import * as fromProfessionals from './reducers/index';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfessionalsEffects } from './effects/professionals.effects';
 
 @NgModule({
   declarations: [ProfessionalsPageComponent],
@@ -12,6 +15,8 @@ import { ProfessionalsRoutingModule } from './professionals-routing.module';
     CommonModule,
     HttpClientModule,
     ProfessionalsRoutingModule,
+    StoreModule.forFeature(fromProfessionals.professionalsFeatureKey, fromProfessionals.reducer),
+    EffectsModule.forFeature([ProfessionalsEffects]),
   ],
 })
 export class ProfessionalsModule { }

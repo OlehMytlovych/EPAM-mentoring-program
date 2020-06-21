@@ -60,14 +60,21 @@
     <div class="registration">
       <span>Sign </span>
       <span
+        *ngIf="isSignedIn | async; else notSignedInUser"
         class="btn"
-        [matMenuTriggerFor]="registerAsMenu">
-        up </span>
-      /
-      <span
-        class="btn"
-        (click)="goToSignIn()">
-        in</span>
+        (click)="signOut()">
+        out
+      </span>
+      <ng-template #notSignedInUser>
+        <span
+          class="btn"
+          [matMenuTriggerFor]="registerAsMenu">
+          up </span>
+        /
+        <span
+          class="btn"
+          (click)="goToSignIn()">
+          in</span>
 
         <mat-menu #registerAsMenu="matMenu">
           <button mat-menu-item
@@ -79,6 +86,8 @@
                   As Professional
           </button>
         </mat-menu>
+      </ng-template>
+
     </div>
   </div>
 

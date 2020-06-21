@@ -10,6 +10,6 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   public getAll() {
-    return this.http.get<Array<string>>(this.configUrl);
+    return this.http.get<string[]>(this.configUrl);
   }
 }

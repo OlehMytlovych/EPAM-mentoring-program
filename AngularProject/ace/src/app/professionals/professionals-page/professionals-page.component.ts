@@ -1,8 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProfessionalService } from '../../sharedServices/professional/professional.service';
 import { Professional } from '../../interfaces/professional';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { State, selectProfessionalsCategory, selectProfessionals } from '../reducers/index';
+import * as ProfessionalsActions from '../actions/professionals.actions';
+import * as FilterActions from '../actions/filter.actions';
 
 @Component({
   selector: 'app-professionals-page',
@@ -10,19 +13,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./professionals-page.component.scss'],
 })
 export class ProfessionalsPageComponent implements OnInit, OnDestroy {
-  public professionals: Professional[];
-  public category = '';
+  public category: Observable<string> = this.store.pipe(select(selectProfessionalsCategory));
+  public professionals: Observable<Professional[]> = this.store.pipe(select(selectProfessionals));
   private allSubscriptions: Subscription = new Subscription();
 
-  constructor(private professionalService: ProfessionalService,
-              private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private store: Store<State>) { }
 
   public ngOnInit(): void {
 
     const queryParamsSubscription = this.route.params
-                                .subscribe(params => {
-                                  this.category = params['category'];
-                                  this.getProfessionals();
+                                .subscribe((params) => {
+                                  this.store.dispatch(FilterActions.ChangeCategory({ data: params['category'] }));
+                                  this.store.dispatch(ProfessionalsActions.loadProfessionals());
                                 });
 
     this.allSubscriptions.add(queryParamsSubscription);
@@ -30,14 +33,5 @@ export class ProfessionalsPageComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy() {
     this.allSubscriptions.unsubscribe();
-  }
-
-  private getProfessionals() {
-    const getAllProsSubscription = this.professionalService.getProfessionals(this.category)
-                              .subscribe(filteredPros => {
-                                this.professionals = filteredPros;
-                              });
-
-    this.allSubscriptions.add(getAllProsSubscription);
   }
 }
