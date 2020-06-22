@@ -1,6 +1,6 @@
 <mat-horizontal-stepper linear #stepper>
   <mat-step [stepControl]="generalForm">
-    <form [formGroup]="generalForm">
+    <form [formGroup]="generalForm" class="general-form">
       <ng-template matStepLabel>Fill out your general info</ng-template>
       <div>
         <mat-form-field>
@@ -17,8 +17,8 @@
 
       <section class="categories">
         <h4>Choose fields you'd like to get jobs in:</h4>
-        <div *ngFor="let category of categories | async">
-          <mat-checkbox class="example-margin" [value]="category" (change)="onCheckChange($event)">{{category | titlecase}}</mat-checkbox>
+        <div *ngFor="let category of categories$ | async">
+          <mat-checkbox [value]="category" (change)="onCheckChange($event)">{{category | titlecase}}</mat-checkbox>
         </div>
       </section>
       <div>
@@ -83,7 +83,7 @@
       </div>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="onSubmit()">Register!</button>
+        <button mat-button class="submit-btn" (click)="onSubmit()">Register!</button>
 
       </div>
     </form>
