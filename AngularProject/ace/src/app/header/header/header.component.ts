@@ -13,7 +13,7 @@ import * as UserRoleActions from '../../actions/user-role.actions';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public categories: Observable<string[]> = this.store.pipe(select(selectCategories));
+  public categories$: Observable<string[]> = this.store.pipe(select(selectCategories));
   public isSignedIn: Observable<boolean> = this.store.pipe(select(selectUserRole), map(role => Boolean(role)));
 
   constructor(private router: Router,

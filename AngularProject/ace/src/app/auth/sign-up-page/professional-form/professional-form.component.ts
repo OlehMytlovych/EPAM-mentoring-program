@@ -11,20 +11,21 @@ import { State, selectCategories } from '../../../reducers/index';
   styleUrls: ['./professional-form.component.scss'],
 })
 export class ProfessionalFormComponent implements OnInit {
-  public categories: Observable<string[]> = this.store.pipe(select(selectCategories));
+  public categories$: Observable<string[]> = this.store.pipe(select(selectCategories));
   public generalForm: FormGroup;
   public detailsForm: FormGroup;
   public finalForm: FormGroup;
+  public submitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              private store: Store<State>) { }
+              public store: Store<State>) { }
 
   public ngOnInit(): void {
 
     this.generalForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       surname: ['', Validators.required],
-      categories: new FormArray([]),
+      categories: new FormArray([], Validators.required),
     });
 
     this.detailsForm = this.formBuilder.group({
@@ -52,7 +53,7 @@ export class ProfessionalFormComponent implements OnInit {
       let i = 0;
 
       formArray.controls.forEach((ctrl: FormControl) => {
-        if (ctrl.value == event.source.value) {
+        if (ctrl.value === event.source.value) {
           formArray.removeAt(i);
           return;
         }
@@ -65,9 +66,10 @@ export class ProfessionalFormComponent implements OnInit {
   public onSubmit() {
     // stop here if form is invalid
     if (this.generalForm.invalid || this.detailsForm.invalid || this.finalForm.invalid) {
+      this.submitted = false;
       return;
     }
-
+    this.submitted = true;
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.generalForm.value) + '\n\n' + JSON.stringify(this.detailsForm.value) + '\n\n' + JSON.stringify(this.finalForm.value));
   }
 }

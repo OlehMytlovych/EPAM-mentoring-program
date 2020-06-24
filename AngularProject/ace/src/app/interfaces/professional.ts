@@ -1,5 +1,5 @@
 export interface ProCategory {
-  categoryName: 'string';
+  categoryName: string;
   rating: number;
 }
 
@@ -21,6 +21,7 @@ export interface Professional {
   address: string;
   about: string;
   registered: string;
+  citizenId: number;
   categories: ProCategory[];
   experience: Experience[];
 

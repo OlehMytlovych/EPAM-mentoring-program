@@ -29,10 +29,28 @@ export const reducers: ActionReducerMap<State> = {
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
 
-export const selectCategories = (state: State) => state.categories.categoriesData;
+export const selectCategoriesFeature = (state: State) => state.categories;
 
-export const selectError = (state: State) => state.categories.error;
+export const selectUserRoleFeature = (state: State) => state.userRole;
 
-export const selectUserRole = (state: State) => state.userRole.userRole;
+export const selectLoadingFeature = (state: State) => state.loading;
 
-export const selectLoading = (state: State) => state.loading.loading;
+export const selectCategories = createSelector(
+  selectCategoriesFeature,
+  (state: CategoriesState) => state.categoriesData,
+);
+
+export const selectCategoriesError = createSelector(
+  selectCategoriesFeature,
+  (state: CategoriesState) => state.error,
+);
+
+export const selectUserRole = createSelector(
+  selectUserRoleFeature,
+  (state: UserRoleState) => state.userRole,
+);
+
+export const selectLoading = createSelector(
+  selectLoadingFeature,
+  (state: LoadingState) => state.loading,
+);

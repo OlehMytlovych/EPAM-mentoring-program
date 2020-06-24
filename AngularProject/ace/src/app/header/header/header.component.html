@@ -18,14 +18,15 @@
         </li>
         <li [matMenuTriggerFor]="prosCategories">
           <span>Professionals</span>
-          <mat-menu #prosCategories="matMenu">
+          <mat-menu #prosCategories class="professionals-categories">
             <button mat-menu-item
                     routerLink="/professionals"
                     routerLinkActive="active">
                     All
             </button>
-            <button *ngFor='let category of categories | async'
-                    mat-menu-item
+            <button *ngFor='let category of categories$ | async'
+                  class="professionals-category-btn"
+                  mat-menu-item
                   [routerLink]="['/professionals', category]"
                   routerLinkActive="active">
                   {{category | titlecase }}
@@ -34,13 +35,13 @@
         </li>
         <li [matMenuTriggerFor]="jobsCategories">
           <span>Jobs</span>
-          <mat-menu #jobsCategories="matMenu">
+          <mat-menu #jobsCategories>
             <button mat-menu-item
                     routerLink="/jobs"
                     routerLinkActive="active">
                     All
             </button>
-            <button *ngFor='let category of categories | async'
+            <button *ngFor='let category of categories$ | async'
                     mat-menu-item
                   [routerLink]="['/jobs', category]"
                   routerLinkActive="active">
@@ -61,22 +62,22 @@
       <span>Sign </span>
       <span
         *ngIf="isSignedIn | async; else notSignedInUser"
-        class="btn"
+        class="btn sign-out-btn"
         (click)="signOut()">
         out
       </span>
       <ng-template #notSignedInUser>
         <span
-          class="btn"
+          class="btn sign-up-btn"
           [matMenuTriggerFor]="registerAsMenu">
           up </span>
         /
         <span
-          class="btn"
+          class="btn sign-in-btn"
           (click)="goToSignIn()">
           in</span>
 
-        <mat-menu #registerAsMenu="matMenu">
+        <mat-menu #registerAsMenu>
           <button mat-menu-item
                   (click)="goToRegistration('customer')">
                   As Customer

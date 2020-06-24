@@ -5,7 +5,7 @@ export class AppPage {
     return browser.get(browser.baseUrl) as Promise<unknown>;
   }
 
-  public getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  public getLogoText(): Promise<string> {
+    return element(by.css('app-root header span.logo')).getText() as Promise<string>;
   }
 }

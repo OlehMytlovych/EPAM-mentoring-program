@@ -22,9 +22,9 @@ export class ProfessionalsPageComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
 
-    const queryParamsSubscription = this.route.params
+    const queryParamsSubscription = this.route.paramMap
                                 .subscribe((params) => {
-                                  this.store.dispatch(FilterActions.ChangeCategory({ data: params['category'] }));
+                                  this.store.dispatch(FilterActions.ChangeCategory({ data: params.get('category') }));
                                   this.store.dispatch(ProfessionalsActions.loadProfessionals());
                                 });
 
