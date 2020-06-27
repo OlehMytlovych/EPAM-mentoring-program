@@ -1,7 +1,7 @@
 
 <div>
-  <p>professionals-page works!</p>
-  <p *ngFor='let prof of professionals | async'>
-    {{prof.name}}
-  </p>
+  <ng-container *ngFor='let pro of professionals$ | async'>
+    <app-professionals-item [pro] = "pro">
+    </app-professionals-item>
+  </ng-container>
 </div>

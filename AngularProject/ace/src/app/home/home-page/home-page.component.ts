@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NewJobDialogComponent } from '../new-job-dialog/new-job-dialog.component';
 import { AuthService } from '../../auth/auth.service';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent implements OnInit {
   public name = 'Alex';
