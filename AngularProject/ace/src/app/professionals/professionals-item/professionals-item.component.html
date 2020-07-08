@@ -1,0 +1,9 @@
+<div class="pro">
+  <img src={{pro?.picture}} alt="">
+  <div>
+    <p>{{pro?.name}}</p>
+    <p>Online: {{pro?.isActive ? 'yes' : 'no'}}</p>
+    <button (click)="checkChangeDetection()">click</button>
+    {{runChangeDetection}}
+  </div>
+</div>

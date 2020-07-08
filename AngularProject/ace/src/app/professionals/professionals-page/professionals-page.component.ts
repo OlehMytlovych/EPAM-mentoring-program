@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Professional } from '../../interfaces/professional';
 import { Subscription, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -11,10 +11,11 @@ import * as FilterActions from '../actions/filter.actions';
   selector: 'app-professionals-page',
   templateUrl: './professionals-page.component.html',
   styleUrls: ['./professionals-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfessionalsPageComponent implements OnInit, OnDestroy {
-  public category: Observable<string> = this.store.pipe(select(selectProfessionalsCategory));
-  public professionals: Observable<Professional[]> = this.store.pipe(select(selectProfessionals));
+  public category$: Observable<string> = this.store.pipe(select(selectProfessionalsCategory));
+  public professionals$: Observable<Professional[]> = this.store.pipe(select(selectProfessionals));
   private allSubscriptions: Subscription = new Subscription();
 
   constructor(private route: ActivatedRoute,

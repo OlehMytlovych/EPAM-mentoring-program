@@ -8,9 +8,10 @@ import { ProfessionalsPageComponent } from './professionals-page/professionals-p
 import * as fromProfessionals from './reducers/index';
 import { EffectsModule } from '@ngrx/effects';
 import { ProfessionalsEffects } from './effects/professionals.effects';
+import { ProfessionalsItemComponent } from './professionals-item/professionals-item.component';
 
 @NgModule({
-  declarations: [ProfessionalsPageComponent],
+  declarations: [ProfessionalsPageComponent, ProfessionalsItemComponent],
   imports: [
     CommonModule,
     HttpClientModule,
