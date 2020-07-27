@@ -6,7 +6,7 @@ import { DebugElement, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MemoizedSelector } from '@ngrx/store';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import * as fromStore from '../../../reducers/index';
+import * as fromStore from '../../../store/reducers/index';
 
 describe('ProfessionalFormComponent', () => {
   let mockStore: MockStore;

@@ -3,9 +3,9 @@ import { Professional } from '../../interfaces/professional';
 import { Subscription, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { State, selectProfessionalsCategory, selectProfessionals } from '../reducers/index';
-import * as ProfessionalsActions from '../actions/professionals.actions';
-import * as FilterActions from '../actions/filter.actions';
+import { State, selectProfessionalsCategory, selectProfessionals } from '../store/reducers/index';
+import * as ProfessionalsActions from '../store/actions/professionals.actions';
+import * as FilterActions from '../store/actions/filter.actions';
 
 @Component({
   selector: 'app-professionals-page',

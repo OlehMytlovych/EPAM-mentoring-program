@@ -3,9 +3,9 @@ import { Observable, Subscription } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { State, selectCategories, selectUserRole } from '../../reducers/index';
-import * as CategoriesActions from '../../actions/categories.actions';
-import * as UserRoleActions from '../../actions/user-role.actions';
+import { State, selectCategories, selectUserRole } from '../../store/reducers/index';
+import * as CategoriesActions from '../../store/actions/categories.actions';
+import * as UserRoleActions from '../../store/actions/user-role.actions';
 import { interval } from 'rxjs';
 
 @Component({

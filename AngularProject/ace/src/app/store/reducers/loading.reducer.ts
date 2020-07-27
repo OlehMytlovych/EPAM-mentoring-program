@@ -8,7 +8,7 @@ import {
   Action,
   on,
 } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import * as LoadingActions from '../actions/loading.actions';
 
 export interface State {

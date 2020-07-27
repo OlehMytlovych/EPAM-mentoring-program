@@ -5,7 +5,7 @@ import { BrowserModule, By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MemoizedSelector } from '@ngrx/store';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import * as fromStore from '../../reducers/index';
+import * as fromStore from '../../store/reducers/index';
 import { userRoles } from 'src/app/userRoles';
 
 describe('HeaderComponent', () => {

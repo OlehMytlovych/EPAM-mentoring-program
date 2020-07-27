@@ -3,7 +3,10 @@ import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@ang
 import { Observable } from 'rxjs';
 import { MustMatch } from '../../../helpers/mustMatch';
 import { Store, select } from '@ngrx/store';
-import { State, selectCategories } from '../../../reducers/index';
+import { State, selectCategories } from '../../../store/reducers/index';
+import * as UserRoleActions from '../../../store/actions/user-role.actions';
+import { userRoles } from '../../../userRoles';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-professional-form',
@@ -18,7 +21,8 @@ export class ProfessionalFormComponent implements OnInit {
   public submitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              public store: Store<State>) { }
+              private store: Store<State>,
+              private router: Router) { }
 
   public ngOnInit(): void {
 
@@ -71,5 +75,7 @@ export class ProfessionalFormComponent implements OnInit {
     }
     this.submitted = true;
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.generalForm.value) + '\n\n' + JSON.stringify(this.detailsForm.value) + '\n\n' + JSON.stringify(this.finalForm.value));
+    this.store.dispatch(UserRoleActions.setUserRole({ data: userRoles.Professional }));
+    this.router.navigate(['home']);
   }
 }

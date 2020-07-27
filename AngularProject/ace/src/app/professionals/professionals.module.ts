@@ -5,9 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfessionalsRoutingModule } from './professionals-routing.module';
 
 import { ProfessionalsPageComponent } from './professionals-page/professionals-page.component';
-import * as fromProfessionals from './reducers/index';
+import * as fromProfessionals from './store/reducers/index';
 import { EffectsModule } from '@ngrx/effects';
-import { ProfessionalsEffects } from './effects/professionals.effects';
+import { ProfessionalsEffects } from './store/effects/professionals.effects';
 import { ProfessionalsItemComponent } from './professionals-item/professionals-item.component';
 
 @NgModule({

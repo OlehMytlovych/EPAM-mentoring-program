@@ -8,9 +8,9 @@ import {
   Action,
   on,
 } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import * as UserRoleActions from '../actions/user-role.actions';
-import { userRoles } from '../userRoles';
+import { userRoles } from '../../userRoles';
 
 export interface State {
   userRole: number;
