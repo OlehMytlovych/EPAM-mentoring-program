@@ -8,7 +8,7 @@ import {
   Action,
   on,
 } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import * as CategoriesActions from '../actions/categories.actions';
 
 export interface State {

@@ -9,7 +9,7 @@ import {
   on,
   combineReducers,
 } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 import { reducer as categoriesReducer, State as CategoriesState } from './categories.reducer';
 import { reducer as userRoleReducer, State as UserRoleState } from './userRole.reducer';

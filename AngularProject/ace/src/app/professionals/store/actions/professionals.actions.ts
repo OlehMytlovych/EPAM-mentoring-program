@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Professional } from '../../interfaces/professional';
+import { Professional } from '../../../interfaces/professional';
 
 export enum ProfessionalsActionTypes {
   LoadProfessionals = '[Professionals] Load Professionals',

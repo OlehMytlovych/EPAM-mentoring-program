@@ -4,7 +4,7 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 import { reducer as professionalsReducer, State as ProfessionalsState } from './professionals.reducer';
 import { reducer as filterReducer, State as FilterState } from './filter.reducer';

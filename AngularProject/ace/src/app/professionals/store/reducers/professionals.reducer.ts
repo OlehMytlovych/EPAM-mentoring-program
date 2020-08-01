@@ -3,7 +3,7 @@ import {
   Action,
   on,
 } from '@ngrx/store';
-import { Professional } from '../../interfaces/professional';
+import { Professional } from '../../../interfaces/professional';
 import * as ProfessionalActions from '../actions/professionals.actions';
 
 export interface State {

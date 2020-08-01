@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of, Observable } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { ProfessionalService } from '../../sharedServices/professional/professional.service';
+import { ProfessionalService } from '../../../sharedServices/professional/professional.service';
 import { ProfessionalsActionTypes } from '../actions/professionals.actions';
 
 import { Store, select } from '@ngrx/store';

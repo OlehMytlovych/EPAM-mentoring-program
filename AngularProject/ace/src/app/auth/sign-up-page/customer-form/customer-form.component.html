@@ -1,1 +1,38 @@
-<p>customer-form works!</p>
+<form [formGroup]="generalForm">
+  <div>
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-ml">
+      <mat-label>Surname</mat-label>
+      <input matInput formControlName="surname" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="my@example.com" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Phone (11 digits)</mat-label>
+      <input matInput formControlName="phone" placeholder="13098123456" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Password (6 chars min)</mat-label>
+      <input matInput formControlName="password" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-ml">
+      <mat-label>Confirm password</mat-label>
+      <input matInput formControlName="confirmPassword" required>
+    </mat-form-field>
+  </div>
+
+  <button mat-button class="submit-btn" (click)="onSubmit()">Register!</button>
+</form>
