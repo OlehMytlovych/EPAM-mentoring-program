@@ -25,6 +25,7 @@ export class ProfessionalFormComponent implements OnInit {
               private router: Router) { }
 
   public ngOnInit(): void {
+    this.submitted = false;
 
     this.generalForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -66,16 +67,27 @@ export class ProfessionalFormComponent implements OnInit {
       });
     }
   }
-
-  public onSubmit() {
+  public checkIfAnyInvalid() {
+    return this.generalForm.invalid || this.detailsForm.invalid || this.finalForm.invalid;
+  }
+  public onSubmit(/* checkIfAnyInvalid: () => boolean */) {
     // stop here if form is invalid
     if (this.generalForm.invalid || this.detailsForm.invalid || this.finalForm.invalid) {
       this.submitted = false;
-      return;
+      return 1;
     }
     this.submitted = true;
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.generalForm.value) + '\n\n' + JSON.stringify(this.detailsForm.value) + '\n\n' + JSON.stringify(this.finalForm.value));
+
+    const newPro = Object.assign({}, this.generalForm.value, this.detailsForm.value, this.finalForm.value);
+
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(newPro));
+
     this.store.dispatch(UserRoleActions.setUserRole({ data: userRoles.Professional }));
+
+    this.routeToHome();
+  }
+
+  private routeToHome() {
     this.router.navigate(['home']);
   }
 }
