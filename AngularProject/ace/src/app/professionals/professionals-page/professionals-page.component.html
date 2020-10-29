@@ -1,7 +1,9 @@
 
-<div>
+<div class="container">
+  <div class="row">
   <ng-container *ngFor='let pro of professionals$ | async'>
-    <app-professionals-item [pro] = "pro">
+    <app-professionals-item [pro] = "pro" class="col-l-3 col-md-4 col-sm-6 col-xs-12">
     </app-professionals-item>
   </ng-container>
+  </div>
 </div>
