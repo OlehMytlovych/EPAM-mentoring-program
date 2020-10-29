@@ -34,6 +34,11 @@ describe('SignUpPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have h3 with openning text', () => {
+    const h3 = fixture.nativeElement.querySelector('h3');
+    expect(h3.textContent).toEqual('Drop a few lines for us so we can get to know you!');
+  });
+
   it('should get value from activatedRoute ', () => {
     expect(component.registerAsCustomer).toBeTruthy();
   });
