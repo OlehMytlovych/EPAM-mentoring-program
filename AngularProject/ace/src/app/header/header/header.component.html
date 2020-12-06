@@ -1,63 +1,65 @@
-<header class = "header">
-  <div class="container">
-    <span class = "logo">
-      <a
-        routerLink="/home"
-        routerLinkActive="active">
-      ACE
-    </a></span>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" routerLink="/home" routerLinkActive="active">
+    ACE
+  </a>
 
-    <nav class="main-navbar">
-      <ul>
-        <li>
-          <a
+  {{time | date: 'hh:mm:ss'}}
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [class] = "{'active' : currentRoute === '/home'}">
+        <a  class="nav-link"
             routerLink="/home"
             routerLinkActive="active">
             <span>Home</span>
           </a>
-        </li>
-        <li [matMenuTriggerFor]="prosCategories">
-          <span>Professionals</span>
-          <mat-menu #prosCategories class="professionals-categories">
-            <button mat-menu-item
-                    routerLink="/professionals"
-                    routerLinkActive="active">
-                    All
-            </button>
-            <button *ngFor='let category of categories$ | async'
-                  class="professionals-category-btn"
+      </li>
+      <li class="nav-item" [matMenuTriggerFor]="prosCategories" [class] = "{'active' : currentRoute.startsWith('/professionals')}">
+        <span class="nav-link">Professionals</span>
+        <mat-menu #prosCategories class="professionals-categories">
+          <button mat-menu-item
+                  routerLink="/professionals"
+                  routerLinkActive="active">
+                  All
+          </button>
+          <button *ngFor='let category of categories$ | async'
+                class="professionals-category-btn"
+                mat-menu-item
+                [routerLink]="['/professionals', category]"
+                routerLinkActive="active">
+                {{category | titlecase }}
+          </button>
+        </mat-menu>
+      </li>
+      <li class="nav-item" [matMenuTriggerFor]="jobsCategories" [class] = "{'active' : currentRoute.startsWith('/jobs')}">
+        <span class="nav-link">Jobs</span>
+        <mat-menu #jobsCategories>
+          <button mat-menu-item
+                  routerLink="/jobs"
+                  routerLinkActive="active">
+                  All
+          </button>
+          <button *ngFor='let category of categories$ | async'
                   mat-menu-item
-                  [routerLink]="['/professionals', category]"
-                  routerLinkActive="active">
-                  {{category | titlecase }}
-            </button>
-          </mat-menu>
-        </li>
-        <li [matMenuTriggerFor]="jobsCategories">
-          <span>Jobs</span>
-          <mat-menu #jobsCategories>
-            <button mat-menu-item
-                    routerLink="/jobs"
-                    routerLinkActive="active">
-                    All
-            </button>
-            <button *ngFor='let category of categories$ | async'
-                    mat-menu-item
-                  [routerLink]="['/jobs', category]"
-                  routerLinkActive="active">
-                  {{category | titlecase }}
-            </button>
-          </mat-menu>
-        </li>
-        <li>
-          <a
-            routerLink="/partners"
-            routerLinkActive="active">
-            <span>Partners</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+                [routerLink]="['/jobs', category]"
+                routerLinkActive="active">
+                {{category | titlecase }}
+          </button>
+        </mat-menu>
+      </li>
+      <li class="nav-item" [class] = "{'active' : currentRoute === '/partners'}">
+        <a class="nav-link"
+          routerLink="/partners"
+          routerLinkActive="active">
+          <span>Partners</span>
+        </a>
+      </li>
+    </ul>
+
     <div class="registration">
       <span>Sign </span>
       <span
@@ -90,8 +92,9 @@
       </ng-template>
 
     </div>
-
-    {{time | date: 'hh:mm:ss'}}
+   <!--  <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
   </div>
-
-</header>
+</nav>
