@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy, NgZone, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { map, share } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import {  Router, NavigationEnd } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { State, selectCategories, selectUserRole } from '../../store/reducers/index';
 import * as CategoriesActions from '../../store/actions/categories.actions';
 import * as UserRoleActions from '../../store/actions/user-role.actions';
 import { interval } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isSignedIn: Observable<boolean> = this.store.pipe(select(selectUserRole), map(role => Boolean(role)));
   public time: Date;
   private allSubscribtions: Subscription = new Subscription();
+  public currentRoute: string;
 
   constructor(private router: Router,
               private store: Store<State>,
@@ -28,6 +30,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => this.enableClock());
     this.store.dispatch(CategoriesActions.loadCategories());
+
+    const queryParamsSubscription =  this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+    ).subscribe((event: NavigationEnd) => {
+      this.changeCurrenrRoute(event.urlAfterRedirects);
+    });
+
+    this.allSubscribtions.add(queryParamsSubscription);
   }
 
   public ngOnDestroy(): void {
@@ -54,5 +64,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.cdr.detectChanges();
       }),
     ).subscribe());
+  }
+
+  public changeCurrenrRoute(newRoute: string) {
+    this.currentRoute = newRoute
   }
 }
